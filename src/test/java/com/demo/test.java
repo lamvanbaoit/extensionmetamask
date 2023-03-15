@@ -19,7 +19,7 @@ public class test extends BasePage {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        options.addExtensions(new File("C:\\Users\\lamva\\Downloads\\nkbihfbeogaeaoehlefnkodbefgpgknn.crx"));
+        options.addExtensions(new File("extension/nkbihfbeogaeaoehlefnkodbefgpgknn.crx"));
 //        options.setAcceptInsecureCerts(true);
         driver = new ChromeDriver(options);
 
