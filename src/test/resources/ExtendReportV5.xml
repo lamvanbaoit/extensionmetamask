@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="guru99" parallel="tests" thread-count="3">
+
+	<listeners>
+<!--		<listener class-name="commons.MethodListener" />-->
+		<!--
+			Chỉ dùng RetryListener cho những testcase không bị phụ thuộc nhau
+			Những test case chạy theo luồng thì không nên sử dụng RetryListener
+			Nếu datatest là động (data test được tạo trong quá trình run test) thì ko nên dùng retry test
+		-->
+<!--		<listener class-name="retryListener.RetryListener"/>-->
+		<listener class-name="reportConfig.ExtentTestListener"/>
+	</listeners>
+	<!--	http://live.techpanda.org/index.php/-->
+	<!--	https://demo.guru99.com/v4/-->
+
+	<parameter name="url" value="https://demo.nopcommerce.com/" />
+
+	<test name="RUN ON CHROME">
+		<parameter name="browser" value="CHROME" />
+		<classes>
+			<class name="com.nopcommerce.register.NopcommercePage_001_Register"/>
+			<class name="com.nopcommerce.login.NopcommercePage_002_Login"/>
+			<class name="com.nopcommerce.myaccount.NopcommercePage_003_MyAccount"/>
+			<class name="com.nopcommerce.search.NopcommercePage_004_Search"/>
+			<class name="com.nopcommerce.sort.NopcommercePage_005_Sort"/>
+		</classes>
+	</test>
+
+<!--	<test name="RUN ON FIREFOX">-->
+<!--		<parameter name="browser" value="FIREFOX" />-->
+<!--		<classes>-->
+<!--			<class name="com.nopcommerce.register.NopcommercePage_001_Register"/>-->
+<!--						<class name="com.nopcommerce.login.NopcommercePage_002_Login"/>-->
+<!--						<class name="com.nopcommerce.myaccount.NopcommercePage_003_MyAccount"/>-->
+<!--						<class name="com.nopcommerce.search.NopcommercePage_004_Search"/>-->
+<!--						<class name="com.nopcommerce.sort.NopcommercePage_005_Sort"/>-->
+<!--		</classes>-->
+<!--	</test>-->
+</suite>

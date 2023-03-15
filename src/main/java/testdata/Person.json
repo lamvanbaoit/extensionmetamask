@@ -1,0 +1,9 @@
+{
+  "firstname" : "Lâm",
+  "lastname" : "Bảo",
+  "fullname" : "Lâm Văn Bảo",
+  "ContactDetail": {
+    "editFirstName": "Tony",
+    "editLastName" : "Lam"
+  }
+}
