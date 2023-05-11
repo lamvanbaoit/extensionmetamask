@@ -131,6 +131,11 @@ public class BasePage {
 		}
 	}
 
+	public void waitNumberOfwindow(WebDriver driver, int numberOfWindow) {
+		explicitWait = new WebDriverWait(driver, longTimeout);
+		explicitWait.until(ExpectedConditions.numberOfWindowsToBe(numberOfWindow));
+	}
+
 	public void closeAllWindowsWithoutParent(WebDriver driver, String parentID) {
 		Set<String> allWindows = driver.getWindowHandles();
 		for (String runWindows : allWindows) {
@@ -989,7 +994,7 @@ public class BasePage {
 	/**
 	 * Get column header
 	 * 
-	 * @param TestObject
+//	 * @param TestObject
 	 * @return
 	 */
 //	public List<String> getColumnHeader(TestObject object){
