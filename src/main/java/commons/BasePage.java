@@ -131,7 +131,7 @@ public class BasePage {
 		}
 	}
 
-	public void waitNumberOfwindow(WebDriver driver, int numberOfWindow) {
+	public void switchToNumberOfwindow(WebDriver driver, int numberOfWindow) {
 		explicitWait = new WebDriverWait(driver, longTimeout);
 		explicitWait.until(ExpectedConditions.numberOfWindowsToBe(numberOfWindow));
 	}
@@ -252,13 +252,14 @@ public class BasePage {
 				.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(childItemLocator)));
 
 		// Lấy tất cả các item trong dropdown bằng bao nhiêu
-//		System.out.println("Item size: " + allItems.size());
+		System.out.println("Item size: " + allItems.size());
 
 		for (WebElement item : allItems) {
 			// Mỗi lần duyệt kiểm tra xem text của item đó có bằng với item mình cần click
 			// hay ko
 			if (item.getText().trim().equals(expectedItem)) {
-				jsExecutor.executeScript("arguments[0].scrollIntoView(true);", item);
+				System.out.println("Item text: " + item.getText());
+//				jsExecutor.executeScript("arguments[0].scrollIntoView(true);", item);
 				sleepInSecond(1);
 				explicitWait.until(ExpectedConditions.elementToBeClickable(item)).click();
 				sleepInSecond(1);
@@ -1102,6 +1103,9 @@ public class BasePage {
 		}
 		return false;
 	}
+
+
+
 
 	private Alert alert;
 	private Select select;

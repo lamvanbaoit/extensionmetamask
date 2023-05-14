@@ -15,6 +15,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.safari.SafariDriver;
@@ -95,11 +97,19 @@ public class BaseTest {
 		BROWSER browser = BROWSER.valueOf(browserName.toUpperCase());
 		if (browser == BROWSER.FIREFOX) {
 			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
+			FirefoxOptions options = new FirefoxOptions();
+			FirefoxProfile profile = new FirefoxProfile();
+			options.addArguments("--remote-allow-origins=*");
+			options.setAcceptInsecureCerts(true);
+			profile.addExtension(new File("extension/nkbihfbeogaeaoehlefnkodbefgpgknn.crx"));
+			options.setProfile(profile);
+			driver = new FirefoxDriver(options);
 		} else if (browser == BROWSER.CHROME) {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--remote-allow-origins=*");
+			options.addExtensions(new File("extension/nkbihfbeogaeaoehlefnkodbefgpgknn.crx"));
+			options.setAcceptInsecureCerts(true);
 			driver = new ChromeDriver(options);
 		} else if (browser == BROWSER.EDGE_CHROMIUM) {
 

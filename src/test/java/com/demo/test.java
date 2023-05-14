@@ -5,7 +5,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -102,13 +101,13 @@ public class test extends BasePage {
         waitForElementClickable(driver, "//span[text()='Login with MetaMask']");
         clickToElement(driver, "//span[text()='Login with MetaMask']");
 
-        waitNumberOfwindow(driver, 3);
+        switchToNumberOfwindow(driver, 3);
         switchToWindowByTitle(driver, "MetaMask Notification");
         System.out.println("lamvanbao");
 
-        waitForElementClickable(driver, "//div[@class='permissions-connect-header__title']");
-        String text = geElementText(driver, "//div[@class='permissions-connect-header__title']");
-        System.out.println(text);
+//        waitForElementClickable(driver, "//div[@class='permissions-connect-header__title']");
+//        String text = geElementText(driver, "//div[@class='permissions-connect-header__title']");
+//        System.out.println(text);
 
         clickToElementByJS(driver, "//button[text()='Next']");
         clickToElementByJS(driver, "//button[text()='Connect']");
@@ -118,10 +117,11 @@ public class test extends BasePage {
 
         switchToWindowByTitle(driver, "The Official Marketplace of Thetan Arena");
 
+        // action
         waitForElementClickable(driver, "//button[@data-test-id='login.connect.accept-and-sign']");
         clickToElement(driver, "//button[@data-test-id='login.connect.accept-and-sign']");
 
-        waitNumberOfwindow(driver, 3);
+        switchToNumberOfwindow(driver, 3);
         switchToWindowByTitle(driver, "MetaMask Notification");
 
         clickToElementByJS(driver, "//button[text()='Sign']");
@@ -147,15 +147,6 @@ public class test extends BasePage {
 
         waitForElementVisible(driver, "//input[@id='custom-address']");
         sendKeyToElement(driver, "//input[@id='custom-address']", "0x21f9b2137d4e1b83d09ea373be773a986c0e3f90");
-
-//        waitForElementVisible(driver, "//input[@id='custom-symbol']");
-//        String textTHC = getElementAttribute(driver, "//input[@id='custom-symbol']", "value");
-//        System.out.println(textTHC);
-//        Assert.assertEquals("THC", textTHC);
-//
-//        waitForElementVisible(driver, "//input[@id='custom-decimals']");
-//        String text18 = getElementCssValue(driver, "//input[@id='custom-decimals']", "value");
-//        Assert.assertEquals("THC", text18);
 
         Thread.sleep(5 * 1000);
 
@@ -217,7 +208,7 @@ public class test extends BasePage {
         waitForElementClickable(driver, "//span[text()='Checkout']/parent::button");
         clickToElement(driver, "//span[text()='Checkout']/parent::button");
 
-        waitNumberOfwindow(driver, 3);
+        switchToNumberOfwindow(driver, 3);
         switchToWindowByTitle(driver, "MetaMask Notification");
 
         clickToElementByJS(driver, "//button[text()='Confirm']");
